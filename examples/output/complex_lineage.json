@@ -1,0 +1,876 @@
+{
+  "lineage": [
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "order_id",
+        "expression": "ob.order_id /* Primary keys and identifiers */"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "order_id",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.order_id /* Primary keys and identifiers */",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "customer_id",
+        "expression": "ob.customer_id"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "customer_id",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.customer_id",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "customer_name",
+        "expression": "ob.customer_name /* Customer info */"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "customer_name",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.customer_name /* Customer info */",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "customer_segment",
+        "expression": "ob.customer_segment"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "customer_segment",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.customer_segment",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "acquisition_date",
+        "expression": "ob.acquisition_date"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "acquisition_date",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.acquisition_date",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "order_date",
+        "expression": "ob.order_date /* Order details */"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "order_date",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.order_date /* Order details */",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "status",
+        "expression": "ob.status"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "status",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.status",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "order_total",
+        "expression": "ob.total_amount"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "total_amount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.total_amount",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "discount",
+        "expression": "ob.discount"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "discount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.discount",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "tax",
+        "expression": "ob.tax"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "tax",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.tax",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "taxable_base",
+        "expression": "ob.total_amount - ob.tax + COALESCE(ob.discount, 0)"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "total_amount",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "order_base",
+          "column": "tax",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "order_base",
+          "column": "discount",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "ob.total_amount - ob.tax + COALESCE(ob.discount, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "line_items_count",
+        "expression": "COALESCE(la.line_items_count, 0)"
+      },
+      "sources": [
+        {
+          "table": "line_aggregates",
+          "column": "line_items_count",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "COALESCE(la.line_items_count, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "total_quantity",
+        "expression": "COALESCE(la.total_quantity, 0)"
+      },
+      "sources": [
+        {
+          "table": "line_aggregates",
+          "column": "total_quantity",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "COALESCE(la.total_quantity, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "gross_amount",
+        "expression": "la.gross_amount"
+      },
+      "sources": [
+        {
+          "table": "line_aggregates",
+          "column": "gross_amount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "la.gross_amount",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "net_amount",
+        "expression": "la.net_amount"
+      },
+      "sources": [
+        {
+          "table": "line_aggregates",
+          "column": "net_amount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "la.net_amount",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "unique_products",
+        "expression": "la.unique_products"
+      },
+      "sources": [
+        {
+          "table": "line_aggregates",
+          "column": "unique_products",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "la.unique_products",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "avg_quantity_per_item",
+        "expression": "la.avg_quantity_per_item"
+      },
+      "sources": [
+        {
+          "table": "line_aggregates",
+          "column": "avg_quantity_per_item",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "la.avg_quantity_per_item",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "payment_count",
+        "expression": "COALESCE(ps.payment_count, 0)"
+      },
+      "sources": [
+        {
+          "table": "payment_summary",
+          "column": "payment_count",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "COALESCE(ps.payment_count, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "total_paid",
+        "expression": "COALESCE(ps.total_paid, 0)"
+      },
+      "sources": [
+        {
+          "table": "payment_summary",
+          "column": "total_paid",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "COALESCE(ps.total_paid, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "failed_payments",
+        "expression": "COALESCE(ps.failed_payments, 0)"
+      },
+      "sources": [
+        {
+          "table": "payment_summary",
+          "column": "failed_payments",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "COALESCE(ps.failed_payments, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "first_payment_date",
+        "expression": "ps.first_payment_date"
+      },
+      "sources": [
+        {
+          "table": "payment_summary",
+          "column": "first_payment_date",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ps.first_payment_date",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "last_payment_date",
+        "expression": "ps.last_payment_date"
+      },
+      "sources": [
+        {
+          "table": "payment_summary",
+          "column": "last_payment_date",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ps.last_payment_date",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "order_rank_by_amount",
+        "expression": "or2.order_rank_by_amount /* Ranking & analytics */"
+      },
+      "sources": [
+        {
+          "table": "order_ranking",
+          "column": "order_rank_by_amount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "or2.order_rank_by_amount /* Ranking & analytics */",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "order_recency_rank",
+        "expression": "or2.order_recency_rank"
+      },
+      "sources": [
+        {
+          "table": "order_ranking",
+          "column": "order_recency_rank",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "or2.order_recency_rank",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "cumulative_customer_spend",
+        "expression": "or2.cumulative_customer_spend"
+      },
+      "sources": [
+        {
+          "table": "order_ranking",
+          "column": "cumulative_customer_spend",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "or2.cumulative_customer_spend",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "prev_order_amount",
+        "expression": "or2.prev_order_amount"
+      },
+      "sources": [
+        {
+          "table": "order_ranking",
+          "column": "prev_order_amount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "or2.prev_order_amount",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "next_order_date",
+        "expression": "or2.next_order_date"
+      },
+      "sources": [
+        {
+          "table": "order_ranking",
+          "column": "next_order_date",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "or2.next_order_date",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "balance_due",
+        "expression": "ob.total_amount /* Derived metrics */ - COALESCE(ps.total_paid, 0)"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "total_amount",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "payment_summary",
+          "column": "total_paid",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "ob.total_amount /* Derived metrics */ - COALESCE(ps.total_paid, 0)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "payment_status",
+        "expression": "CASE WHEN ob.status = 'shipped' AND ps.total_paid >= ob.total_amount THEN 'paid' WHEN ob.status = 'shipped' AND ps.total_paid < ob.total_amount THEN 'partially_paid' WHEN ob.status = 'cancelled' THEN 'cancelled' WHEN ob.status = 'returned' THEN 'returned' ELSE 'pending' END"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "status",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "'shipped'",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "payment_summary",
+          "column": "total_paid",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "order_base",
+          "column": "total_amount",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "'paid'",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "'partially_paid'",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "'cancelled'",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "'returned'",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "'pending'",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "CASE WHEN ob.status = 'shipped' AND ps.total_paid >= ob.total_amount THEN 'paid' WHEN ob.status = 'shipped' AND ps.total_paid < ob.total_amount THEN 'partially_paid' WHEN ob.status = 'cancelled' THEN 'cancelled' WHEN ob.status = 'returned' THEN 'returned' ELSE 'pending' END",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "global_sales_rank",
+        "expression": "DENSE_RANK() OVER (ORDER BY ob.total_amount DESC)"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "total_amount",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "unknown",
+      "expression": "DENSE_RANK() OVER (ORDER BY ob.total_amount DESC)",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "city",
+        "expression": "ob.city /* Geography */"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "city",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.city /* Geography */",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "state",
+        "expression": "ob.state"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "state",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.state",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "country",
+        "expression": "ob.country"
+      },
+      "sources": [
+        {
+          "table": "order_base",
+          "column": "country",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "ob.country",
+      "confidence": 1.0,
+      "source_file": "complex.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "analytics.daily_order_summary",
+        "column": "processed_at",
+        "expression": "CURRENT_TIMESTAMP"
+      },
+      "sources": [],
+      "transformation": "expression",
+      "expression": "CURRENT_TIMESTAMP",
+      "confidence": 0.5,
+      "source_file": "complex.sql",
+      "warnings": []
+    }
+  ],
+  "tables": {
+    "sources": {
+      "line_aggregates": [
+        "avg_quantity_per_item",
+        "gross_amount",
+        "line_items_count",
+        "net_amount",
+        "total_quantity",
+        "unique_products"
+      ],
+      "order_base": [
+        "acquisition_date",
+        "city",
+        "country",
+        "customer_id",
+        "customer_name",
+        "customer_segment",
+        "discount",
+        "order_date",
+        "order_id",
+        "state",
+        "status",
+        "tax",
+        "total_amount"
+      ],
+      "order_ranking": [
+        "cumulative_customer_spend",
+        "next_order_date",
+        "order_rank_by_amount",
+        "order_recency_rank",
+        "prev_order_amount"
+      ],
+      "payment_summary": [
+        "failed_payments",
+        "first_payment_date",
+        "last_payment_date",
+        "payment_count",
+        "total_paid"
+      ]
+    },
+    "targets": {
+      "analytics.daily_order_summary": [
+        "acquisition_date",
+        "avg_quantity_per_item",
+        "balance_due",
+        "city",
+        "country",
+        "cumulative_customer_spend",
+        "customer_id",
+        "customer_name",
+        "customer_segment",
+        "discount",
+        "failed_payments",
+        "first_payment_date",
+        "global_sales_rank",
+        "gross_amount",
+        "last_payment_date",
+        "line_items_count",
+        "net_amount",
+        "next_order_date",
+        "order_date",
+        "order_id",
+        "order_rank_by_amount",
+        "order_recency_rank",
+        "order_total",
+        "payment_count",
+        "payment_status",
+        "prev_order_amount",
+        "processed_at",
+        "state",
+        "status",
+        "tax",
+        "taxable_base",
+        "total_paid",
+        "total_quantity",
+        "unique_products"
+      ]
+    },
+    "intermediates": {}
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "generated_at": "2026-07-28T04:05:32.231893+00:00",
+    "files_processed": 1,
+    "statements_parsed": 3,
+    "edges_count": 34,
+    "tables_count": 5,
+    "dialect": "trino",
+    "errors": [],
+    "processing_time_ms": 2.71
+  }
+}

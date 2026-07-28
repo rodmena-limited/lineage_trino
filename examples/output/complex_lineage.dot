@@ -1,0 +1,685 @@
+digraph Lineage {
+  rankdir=LR;
+  bgcolor="#f8f9fa";
+  fontname="Helvetica";
+  labeljust=l;
+  pad=0.5;
+  nodesep=0.8;
+  ranksep=2.0;
+  splines=polyline;
+  newrank=true;
+
+  node [
+    shape=plain, 
+    fontname="Helvetica", 
+    fontsize=11, 
+    margin=0, 
+  ];
+
+  edge [
+    fontname="Helvetica", 
+    fontsize=9, 
+    arrowsize=0.8, 
+  ];
+
+  tbl_0 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e8f5e9" style="rounded">
+      <tr>
+        <td bgcolor="#2e7d32" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>analytics.daily_order_summary</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_acquisition_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">acquisition_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_avg_quantity_per_item" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">avg_quantity_per_item</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_balance_due" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">balance_due</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_city" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">city</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_country" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">country</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_cumulative_customer_spend" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">cumulative_customer_spend</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_customer_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_customer_name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_customer_segment" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_segment</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_discount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">discount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_failed_payments" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">failed_payments</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_first_payment_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">first_payment_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_global_sales_rank" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">global_sales_rank</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_gross_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">gross_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_last_payment_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">last_payment_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_line_items_count" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">line_items_count</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_net_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">net_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_next_order_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">next_order_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_order_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_order_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_order_rank_by_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_rank_by_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_order_recency_rank" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_recency_rank</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_order_total" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_total</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_payment_count" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">payment_count</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_payment_status" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">payment_status</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_prev_order_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">prev_order_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_processed_at" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">processed_at</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_state" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">state</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_status" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">status</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_tax" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">tax</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_taxable_base" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">taxable_base</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_total_paid" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_paid</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_total_quantity" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_quantity</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="analytics_daily_order_summary_unique_products" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">unique_products</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="analytics.daily_order_summary"
+  ];
+
+  tbl_1 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>line_aggregates</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="line_aggregates_avg_quantity_per_item" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">avg_quantity_per_item</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="line_aggregates_gross_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">gross_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="line_aggregates_line_items_count" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">line_items_count</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="line_aggregates_net_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">net_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="line_aggregates_total_quantity" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_quantity</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="line_aggregates_unique_products" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">unique_products</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="line_aggregates"
+  ];
+
+  tbl_2 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>order_base</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_acquisition_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">acquisition_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_city" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">city</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_country" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">country</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_customer_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_customer_name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_customer_segment" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_segment</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_discount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">discount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_order_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_order_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_state" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">state</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_status" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">status</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_tax" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">tax</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_base_total_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="order_base"
+  ];
+
+  tbl_3 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>order_ranking</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_ranking_cumulative_customer_spend" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">cumulative_customer_spend</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_ranking_next_order_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">next_order_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_ranking_order_rank_by_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_rank_by_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_ranking_order_recency_rank" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_recency_rank</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_ranking_prev_order_amount" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">prev_order_amount</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="order_ranking"
+  ];
+
+  tbl_4 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>payment_summary</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="payment_summary_failed_payments" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">failed_payments</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="payment_summary_first_payment_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">first_payment_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="payment_summary_last_payment_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">last_payment_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="payment_summary_payment_count" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">payment_count</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="payment_summary_total_paid" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_paid</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="payment_summary"
+  ];
+
+  tbl_2:order_base_order_id:e -> tbl_0:analytics_daily_order_summary_order_id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.order_id → analytics.daily_order_summary.order_id" ]
+  tbl_2:order_base_customer_id:e -> tbl_0:analytics_daily_order_summary_customer_id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.customer_id → analytics.daily_order_summary.customer_id" ]
+  tbl_2:order_base_customer_name:e -> tbl_0:analytics_daily_order_summary_customer_name:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.customer_name → analytics.daily_order_summary.customer_name" ]
+  tbl_2:order_base_customer_segment:e -> tbl_0:analytics_daily_order_summary_customer_segment:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.customer_segment → analytics.daily_order_summary.customer_segment" ]
+  tbl_2:order_base_acquisition_date:e -> tbl_0:analytics_daily_order_summary_acquisition_date:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.acquisition_date → analytics.daily_order_summary.acquisition_date" ]
+  tbl_2:order_base_order_date:e -> tbl_0:analytics_daily_order_summary_order_date:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.order_date → analytics.daily_order_summary.order_date" ]
+  tbl_2:order_base_status:e -> tbl_0:analytics_daily_order_summary_status:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.status → analytics.daily_order_summary.status" ]
+  tbl_2:order_base_total_amount:e -> tbl_0:analytics_daily_order_summary_order_total:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.total_amount → analytics.daily_order_summary.order_total" ]
+  tbl_2:order_base_discount:e -> tbl_0:analytics_daily_order_summary_discount:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.discount → analytics.daily_order_summary.discount" ]
+  tbl_2:order_base_tax:e -> tbl_0:analytics_daily_order_summary_tax:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.tax → analytics.daily_order_summary.tax" ]
+  tbl_2:order_base_total_amount:e -> tbl_0:analytics_daily_order_summary_taxable_base:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_base.total_amount → analytics.daily_order_summary.taxable_base" ]
+  tbl_2:order_base_tax:e -> tbl_0:analytics_daily_order_summary_taxable_base:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_base.tax → analytics.daily_order_summary.taxable_base" ]
+  tbl_2:order_base_discount:e -> tbl_0:analytics_daily_order_summary_taxable_base:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_base.discount → analytics.daily_order_summary.taxable_base" ]
+  tbl_1:line_aggregates_line_items_count:e -> tbl_0:analytics_daily_order_summary_line_items_count:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="line_aggregates.line_items_count → analytics.daily_order_summary.line_items_count" ]
+  tbl_1:line_aggregates_total_quantity:e -> tbl_0:analytics_daily_order_summary_total_quantity:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="line_aggregates.total_quantity → analytics.daily_order_summary.total_quantity" ]
+  tbl_1:line_aggregates_gross_amount:e -> tbl_0:analytics_daily_order_summary_gross_amount:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="line_aggregates.gross_amount → analytics.daily_order_summary.gross_amount" ]
+  tbl_1:line_aggregates_net_amount:e -> tbl_0:analytics_daily_order_summary_net_amount:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="line_aggregates.net_amount → analytics.daily_order_summary.net_amount" ]
+  tbl_1:line_aggregates_unique_products:e -> tbl_0:analytics_daily_order_summary_unique_products:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="line_aggregates.unique_products → analytics.daily_order_summary.unique_products" ]
+  tbl_1:line_aggregates_avg_quantity_per_item:e -> tbl_0:analytics_daily_order_summary_avg_quantity_per_item:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="line_aggregates.avg_quantity_per_item → analytics.daily_order_summary.avg_quantity_per_item" ]
+  tbl_4:payment_summary_payment_count:e -> tbl_0:analytics_daily_order_summary_payment_count:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="payment_summary.payment_count → analytics.daily_order_summary.payment_count" ]
+  tbl_4:payment_summary_total_paid:e -> tbl_0:analytics_daily_order_summary_total_paid:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="payment_summary.total_paid → analytics.daily_order_summary.total_paid" ]
+  tbl_4:payment_summary_failed_payments:e -> tbl_0:analytics_daily_order_summary_failed_payments:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="payment_summary.failed_payments → analytics.daily_order_summary.failed_payments" ]
+  tbl_4:payment_summary_first_payment_date:e -> tbl_0:analytics_daily_order_summary_first_payment_date:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="payment_summary.first_payment_date → analytics.daily_order_summary.first_payment_date" ]
+  tbl_4:payment_summary_last_payment_date:e -> tbl_0:analytics_daily_order_summary_last_payment_date:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="payment_summary.last_payment_date → analytics.daily_order_summary.last_payment_date" ]
+  tbl_3:order_ranking_order_rank_by_amount:e -> tbl_0:analytics_daily_order_summary_order_rank_by_amount:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_ranking.order_rank_by_amount → analytics.daily_order_summary.order_rank_by_amount" ]
+  tbl_3:order_ranking_order_recency_rank:e -> tbl_0:analytics_daily_order_summary_order_recency_rank:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_ranking.order_recency_rank → analytics.daily_order_summary.order_recency_rank" ]
+  tbl_3:order_ranking_cumulative_customer_spend:e -> tbl_0:analytics_daily_order_summary_cumulative_customer_spend:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_ranking.cumulative_customer_spend → analytics.daily_order_summary.cumulative_customer_spend" ]
+  tbl_3:order_ranking_prev_order_amount:e -> tbl_0:analytics_daily_order_summary_prev_order_amount:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_ranking.prev_order_amount → analytics.daily_order_summary.prev_order_amount" ]
+  tbl_3:order_ranking_next_order_date:e -> tbl_0:analytics_daily_order_summary_next_order_date:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_ranking.next_order_date → analytics.daily_order_summary.next_order_date" ]
+  tbl_2:order_base_total_amount:e -> tbl_0:analytics_daily_order_summary_balance_due:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_base.total_amount → analytics.daily_order_summary.balance_due" ]
+  tbl_4:payment_summary_total_paid:e -> tbl_0:analytics_daily_order_summary_balance_due:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="payment_summary.total_paid → analytics.daily_order_summary.balance_due" ]
+  tbl_2:order_base_status:e -> tbl_0:analytics_daily_order_summary_payment_status:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_base.status → analytics.daily_order_summary.payment_status" ]
+  tbl_4:payment_summary_total_paid:e -> tbl_0:analytics_daily_order_summary_payment_status:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="payment_summary.total_paid → analytics.daily_order_summary.payment_status" ]
+  tbl_2:order_base_total_amount:e -> tbl_0:analytics_daily_order_summary_payment_status:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_base.total_amount → analytics.daily_order_summary.payment_status" ]
+  tbl_2:order_base_total_amount:e -> tbl_0:analytics_daily_order_summary_global_sales_rank:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.total_amount → analytics.daily_order_summary.global_sales_rank" ]
+  tbl_2:order_base_city:e -> tbl_0:analytics_daily_order_summary_city:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.city → analytics.daily_order_summary.city" ]
+  tbl_2:order_base_state:e -> tbl_0:analytics_daily_order_summary_state:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.state → analytics.daily_order_summary.state" ]
+  tbl_2:order_base_country:e -> tbl_0:analytics_daily_order_summary_country:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_base.country → analytics.daily_order_summary.country" ]
+}

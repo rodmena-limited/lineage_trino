@@ -1,0 +1,426 @@
+{
+  "lineage": [
+    {
+      "target": {
+        "table": "__output__",
+        "column": "id",
+        "expression": "id"
+      },
+      "sources": [
+        {
+          "table": "customers",
+          "column": "id",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "id",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "name",
+        "expression": "name"
+      },
+      "sources": [
+        {
+          "table": "customers",
+          "column": "name",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "name",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "email",
+        "expression": "email"
+      },
+      "sources": [
+        {
+          "table": "customers",
+          "column": "email",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "email",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "product_id",
+        "expression": "product_id"
+      },
+      "sources": [
+        {
+          "table": "order_items",
+          "column": "product_id",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "product_id",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "quantity",
+        "expression": "quantity"
+      },
+      "sources": [
+        {
+          "table": "order_items",
+          "column": "quantity",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "quantity",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "price",
+        "expression": "price"
+      },
+      "sources": [
+        {
+          "table": "order_items",
+          "column": "price",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "price",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "total_price",
+        "expression": "quantity * price"
+      },
+      "sources": [
+        {
+          "table": "order_items",
+          "column": "quantity",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "order_items",
+          "column": "price",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "expression",
+      "expression": "quantity * price",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "category",
+        "expression": "category"
+      },
+      "sources": [
+        {
+          "table": "products",
+          "column": "category",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "category",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "product_count",
+        "expression": "COUNT(*)"
+      },
+      "sources": [
+        {
+          "table": "products",
+          "column": "*",
+          "relation": "through_aggregate",
+          "alias": null
+        }
+      ],
+      "transformation": "aggregate",
+      "expression": "COUNT(*)",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "avg_price",
+        "expression": "AVG(price)"
+      },
+      "sources": [
+        {
+          "table": "products",
+          "column": "price",
+          "relation": "through_aggregate",
+          "alias": null
+        }
+      ],
+      "transformation": "aggregate",
+      "expression": "AVG(price)",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "order_id",
+        "expression": "o.id"
+      },
+      "sources": [
+        {
+          "table": "orders",
+          "column": "id",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "o.id",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "order_date",
+        "expression": "o.order_date"
+      },
+      "sources": [
+        {
+          "table": "orders",
+          "column": "order_date",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "o.order_date",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "customer_name",
+        "expression": "c.name"
+      },
+      "sources": [
+        {
+          "table": "customers",
+          "column": "name",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "c.name",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "customer_email",
+        "expression": "c.email"
+      },
+      "sources": [
+        {
+          "table": "customers",
+          "column": "email",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "c.email",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "id",
+        "expression": "id"
+      },
+      "sources": [
+        {
+          "table": "active_customers",
+          "column": "id",
+          "relation": "direct",
+          "alias": null
+        },
+        {
+          "table": "active_customers",
+          "column": "id",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "id",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "name",
+        "expression": "name"
+      },
+      "sources": [
+        {
+          "table": "active_customers",
+          "column": "name",
+          "relation": "direct",
+          "alias": null
+        },
+        {
+          "table": "active_customers",
+          "column": "name",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "name",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "__output__",
+        "column": "email",
+        "expression": "email"
+      },
+      "sources": [
+        {
+          "table": "active_customers",
+          "column": "email",
+          "relation": "direct",
+          "alias": null
+        },
+        {
+          "table": "active_customers",
+          "column": "email",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "email",
+      "confidence": 1.0,
+      "source_file": "simple.sql",
+      "warnings": []
+    }
+  ],
+  "tables": {
+    "sources": {
+      "active_customers": [
+        "email",
+        "id",
+        "name"
+      ],
+      "customers": [
+        "email",
+        "id",
+        "name"
+      ],
+      "order_items": [
+        "price",
+        "product_id",
+        "quantity"
+      ],
+      "orders": [
+        "id",
+        "order_date"
+      ],
+      "products": [
+        "*",
+        "category",
+        "price"
+      ]
+    },
+    "targets": {
+      "__output__": [
+        "avg_price",
+        "category",
+        "customer_email",
+        "customer_name",
+        "email",
+        "id",
+        "name",
+        "order_date",
+        "order_id",
+        "price",
+        "product_count",
+        "product_id",
+        "quantity",
+        "total_price"
+      ]
+    },
+    "intermediates": {}
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "generated_at": "2026-07-28T04:05:32.014617+00:00",
+    "files_processed": 1,
+    "statements_parsed": 5,
+    "edges_count": 17,
+    "tables_count": 6,
+    "dialect": "trino",
+    "errors": [],
+    "processing_time_ms": 1.16
+  }
+}

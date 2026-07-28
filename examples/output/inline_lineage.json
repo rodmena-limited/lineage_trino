@@ -1,0 +1,128 @@
+{
+  "lineage": [
+    {
+      "target": {
+        "table": "revenue_report",
+        "column": "department",
+        "expression": "d.dept_name"
+      },
+      "sources": [
+        {
+          "table": "departments",
+          "column": "dept_name",
+          "relation": "direct",
+          "alias": null
+        }
+      ],
+      "transformation": "direct",
+      "expression": "d.dept_name",
+      "confidence": 1.0,
+      "source_file": "inline.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "revenue_report",
+        "column": "total_compensation",
+        "expression": "SUM(e.salary + COALESCE(e.bonus, 0))"
+      },
+      "sources": [
+        {
+          "table": "employees",
+          "column": "salary",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "employees",
+          "column": "bonus",
+          "relation": "through_expression",
+          "alias": null
+        },
+        {
+          "table": "__constants__",
+          "column": "0",
+          "relation": "through_expression",
+          "alias": null
+        }
+      ],
+      "transformation": "aggregate",
+      "expression": "SUM(e.salary + COALESCE(e.bonus, 0))",
+      "confidence": 1.0,
+      "source_file": "inline.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "revenue_report",
+        "column": "employee_count",
+        "expression": "COUNT(DISTINCT e.id)"
+      },
+      "sources": [
+        {
+          "table": "employees",
+          "column": "id",
+          "relation": "through_aggregate",
+          "alias": null
+        }
+      ],
+      "transformation": "aggregate",
+      "expression": "COUNT(DISTINCT e.id)",
+      "confidence": 1.0,
+      "source_file": "inline.sql",
+      "warnings": []
+    },
+    {
+      "target": {
+        "table": "revenue_report",
+        "column": "avg_salary",
+        "expression": "AVG(e.salary)"
+      },
+      "sources": [
+        {
+          "table": "employees",
+          "column": "salary",
+          "relation": "through_aggregate",
+          "alias": null
+        }
+      ],
+      "transformation": "aggregate",
+      "expression": "AVG(e.salary)",
+      "confidence": 1.0,
+      "source_file": "inline.sql",
+      "warnings": []
+    }
+  ],
+  "tables": {
+    "sources": {
+      "departments": [
+        "dept_name"
+      ],
+      "employees": [
+        "bonus",
+        "id",
+        "salary"
+      ]
+    },
+    "targets": {
+      "revenue_report": [
+        "avg_salary",
+        "department",
+        "employee_count",
+        "total_compensation"
+      ]
+    },
+    "intermediates": {}
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "generated_at": "2026-07-28T04:05:32.453601+00:00",
+    "files_processed": 1,
+    "statements_parsed": 1,
+    "edges_count": 4,
+    "tables_count": 3,
+    "dialect": "trino",
+    "errors": [],
+    "processing_time_ms": 0.55
+  }
+}

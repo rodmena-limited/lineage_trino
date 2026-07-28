@@ -1,0 +1,135 @@
+digraph Lineage {
+  rankdir=LR;
+  bgcolor="#f8f9fa";
+  fontname="Helvetica";
+  labeljust=l;
+  pad=0.5;
+  nodesep=0.8;
+  ranksep=2.0;
+  splines=polyline;
+  newrank=true;
+
+  node [
+    shape=plain, 
+    fontname="Helvetica", 
+    fontsize=11, 
+    margin=0, 
+  ];
+
+  edge [
+    fontname="Helvetica", 
+    fontsize=9, 
+    arrowsize=0.8, 
+  ];
+
+  tbl_0 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>departments</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="departments_dept_name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">dept_name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="departments"
+  ];
+
+  tbl_1 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>employees</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="employees_bonus" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">bonus</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="employees_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="employees_salary" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">salary</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="employees"
+  ];
+
+  tbl_2 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e8f5e9" style="rounded">
+      <tr>
+        <td bgcolor="#2e7d32" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>revenue_report</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="revenue_report_avg_salary" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">avg_salary</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="revenue_report_department" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">department</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="revenue_report_employee_count" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">employee_count</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="revenue_report_total_compensation" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_compensation</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="revenue_report"
+  ];
+
+  tbl_0:departments_dept_name:e -> tbl_2:revenue_report_department:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="departments.dept_name → revenue_report.department" ]
+  tbl_1:employees_salary:e -> tbl_2:revenue_report_total_compensation:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="employees.salary → revenue_report.total_compensation" ]
+  tbl_1:employees_bonus:e -> tbl_2:revenue_report_total_compensation:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="employees.bonus → revenue_report.total_compensation" ]
+  tbl_1:employees_id:e -> tbl_2:revenue_report_employee_count:w [color="#e8710a", style="dashed", penwidth=1.5, tooltip="employees.id → revenue_report.employee_count" ]
+  tbl_1:employees_salary:e -> tbl_2:revenue_report_avg_salary:w [color="#e8710a", style="dashed", penwidth=1.5, tooltip="employees.salary → revenue_report.avg_salary" ]
+}

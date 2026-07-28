@@ -1,0 +1,364 @@
+digraph Lineage {
+  rankdir=LR;
+  bgcolor="#f8f9fa";
+  fontname="Helvetica";
+  labeljust=l;
+  pad=0.5;
+  nodesep=0.8;
+  ranksep=2.0;
+  splines=polyline;
+  newrank=true;
+
+  node [
+    shape=plain, 
+    fontname="Helvetica", 
+    fontsize=11, 
+    margin=0, 
+  ];
+
+  edge [
+    fontname="Helvetica", 
+    fontsize=9, 
+    arrowsize=0.8, 
+  ];
+
+  tbl_0 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e8f5e9" style="rounded">
+      <tr>
+        <td bgcolor="#2e7d32" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>__output__</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___avg_price" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">avg_price</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___category" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">category</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___customer_email" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_email</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___customer_name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">customer_name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___email" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">email</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___order_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___order_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___price" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">price</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___product_count" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">product_count</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___product_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">product_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___quantity" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">quantity</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="__output___total_price" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">total_price</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="__output__"
+  ];
+
+  tbl_1 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>active_customers</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="active_customers_email" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">email</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="active_customers_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="active_customers_name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="active_customers"
+  ];
+
+  tbl_2 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>customers</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="customers_email" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">email</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="customers_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="customers_name" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">name</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="customers"
+  ];
+
+  tbl_3 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>order_items</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_items_price" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">price</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_items_product_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">product_id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="order_items_quantity" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">quantity</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="order_items"
+  ];
+
+  tbl_4 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>orders</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="orders_id" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">id</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="orders_order_date" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">order_date</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="orders"
+  ];
+
+  tbl_5 [
+    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="#e3f2fd" style="rounded">
+      <tr>
+        <td bgcolor="#1565c0" colspan="1" fixedsize="false">
+          <font color="#ffffff" point-size="13"><b>products</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td port="products_star" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">*</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="products_category" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">category</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td port="products_price" href="" bgcolor="#ffffff" border="1" sides="LR" cellpadding="4">
+          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td align="left"><font color="#222222" point-size="11">price</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>>
+    tooltip="products"
+  ];
+
+  tbl_2:customers_id:e -> tbl_0:__output___id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="customers.id → __output__.id" ]
+  tbl_2:customers_name:e -> tbl_0:__output___name:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="customers.name → __output__.name" ]
+  tbl_2:customers_email:e -> tbl_0:__output___email:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="customers.email → __output__.email" ]
+  tbl_3:order_items_product_id:e -> tbl_0:__output___product_id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_items.product_id → __output__.product_id" ]
+  tbl_3:order_items_quantity:e -> tbl_0:__output___quantity:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_items.quantity → __output__.quantity" ]
+  tbl_3:order_items_price:e -> tbl_0:__output___price:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="order_items.price → __output__.price" ]
+  tbl_3:order_items_quantity:e -> tbl_0:__output___total_price:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_items.quantity → __output__.total_price" ]
+  tbl_3:order_items_price:e -> tbl_0:__output___total_price:w [color="#7c4dff", style="dotted", penwidth=1.5, tooltip="order_items.price → __output__.total_price" ]
+  tbl_5:products_category:e -> tbl_0:__output___category:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="products.category → __output__.category" ]
+  tbl_5:products_star:e -> tbl_0:__output___product_count:w [color="#e8710a", style="dashed", penwidth=1.5, tooltip="products.* → __output__.product_count" ]
+  tbl_5:products_price:e -> tbl_0:__output___avg_price:w [color="#e8710a", style="dashed", penwidth=1.5, tooltip="products.price → __output__.avg_price" ]
+  tbl_4:orders_id:e -> tbl_0:__output___order_id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="orders.id → __output__.order_id" ]
+  tbl_4:orders_order_date:e -> tbl_0:__output___order_date:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="orders.order_date → __output__.order_date" ]
+  tbl_2:customers_name:e -> tbl_0:__output___customer_name:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="customers.name → __output__.customer_name" ]
+  tbl_2:customers_email:e -> tbl_0:__output___customer_email:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="customers.email → __output__.customer_email" ]
+  tbl_1:active_customers_id:e -> tbl_0:__output___id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="active_customers.id → __output__.id" ]
+  tbl_1:active_customers_id:e -> tbl_0:__output___id:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="active_customers.id → __output__.id" ]
+  tbl_1:active_customers_name:e -> tbl_0:__output___name:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="active_customers.name → __output__.name" ]
+  tbl_1:active_customers_name:e -> tbl_0:__output___name:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="active_customers.name → __output__.name" ]
+  tbl_1:active_customers_email:e -> tbl_0:__output___email:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="active_customers.email → __output__.email" ]
+  tbl_1:active_customers_email:e -> tbl_0:__output___email:w [color="#1a73e8", style="solid", penwidth=1.8, tooltip="active_customers.email → __output__.email" ]
+}
