@@ -282,7 +282,7 @@ class LineageEngine:
         a single edge per source table with a wildcard marker.
         """
         edges = []
-        for alias, table_name in context.aliases.items():
+        for table_name in context.aliases.values():
             if table_name.startswith("__subquery__"):
                 continue
             target_col = TargetColumn(
@@ -345,7 +345,7 @@ class LineageEngine:
         # --- Star: SELECT * ---
         if isinstance(expr, exp.Star):
             all_sources = []
-            for alias, table_name in context.aliases.items():
+            for table_name in context.aliases.values():
                 if not table_name.startswith("__subquery__"):
                     all_sources.append(
                         SourceColumn(
@@ -626,7 +626,7 @@ class TraceContext:
         if key in self.ctes:
             return key
         # Might already be a table name
-        for alias, table_name in self.aliases.items():
+        for table_name in self.aliases.values():
             if table_name.lower() == key:
                 return table_name
         # Search parent scopes
@@ -652,7 +652,7 @@ class TraceContext:
                         candidates.append(cte_name)
 
         # Check table aliases
-        for alias, table_name in self.aliases.items():
+        for table_name in self.aliases.values():
             if not table_name.startswith("__subquery__"):
                 candidates.append(table_name)
 
@@ -763,12 +763,10 @@ def _is_aggregation_function(expr: exp.Func) -> bool:
     if isinstance(expr, exp.AggFunc):
         return True
     # Check if it's a known agg
-    if func_name in {
+    return func_name in {
         "sum", "count", "avg", "min", "max",
         "array_agg", "collect",
-    }:
-        return True
-    return False
+    }
 
 
 def _classify_expression(

@@ -325,7 +325,7 @@ class GraphRenderer:
             png_bytes = src.pipe(format="png")
             logger.debug("Rendered PNG (%d bytes)", len(png_bytes))
             return png_bytes
-        except Exception as e:
+        except (OSError, RuntimeError, ValueError) as e:
             logger.warning("Failed to render PNG: %s", e)
             return None
 

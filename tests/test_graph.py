@@ -22,7 +22,7 @@ class TestGraphRenderer:
     def test_render_simple_graph(self, engine, renderer):
         """Render a simple lineage graph (STATE-2)."""
         graph = engine.extract_from_sql("SELECT a, b FROM t")
-        dot, png = renderer.render(graph)
+        dot, _ = renderer.render(graph)
         assert dot.startswith("digraph")
         assert "Lineage" in dot
         assert "digraph Lineage" in dot

@@ -13,8 +13,8 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from lineage_trino.lineage import LineageEngine
 from lineage_trino.graph import GraphRenderer
+from lineage_trino.lineage import LineageEngine
 from lineage_trino.models import LineageResult
 
 
@@ -64,11 +64,11 @@ def run_example(name: str, sql_text: str, output_dir: Path):
         else:
             print("  PNG:  skipped (graphviz binary not found)")
 
-    except Exception as e:
+    except (OSError, ValueError, RuntimeError) as e:
         print(f"  Graph rendering error: {e}")
 
     # 4. Print lineage summary
-    print(f"\n  --- Lineage Summary ---")
+    print("\n  --- Lineage Summary ---")
     for edge in graph.edges[:10]:  # Show first 10
         sources_str = ", ".join(
             f"{s.table}.{s.column}" for s in edge.sources

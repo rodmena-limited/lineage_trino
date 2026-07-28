@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# Runtime
+.omo/
+.venv/
+.venv*/
+venv/
+*.egg
+
+# OS
+Thumbs.db
+.DS_Store?

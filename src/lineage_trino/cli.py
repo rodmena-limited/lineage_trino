@@ -43,7 +43,7 @@ def callback():
 
 @app.command()
 def parse(
-    files: list[str] = typer.Argument(
+    files: list[str] = typer.Argument(  # noqa: B008
         ..., help="SQL file(s) to parse", exists=True, readable=True
     ),
     output_dir: str = typer.Option(
@@ -120,7 +120,7 @@ def parse(
                 typer.echo(f"  PNG:  {png_path}")
             else:
                 typer.echo("  PNG:  skipped (graphviz binary not found)")
-        except Exception as e:
+        except (OSError, ValueError, RuntimeError) as e:
             logger.warning("Graph rendering failed: %s", e)
             typer.echo(f"  Graph rendering failed: {e}", err=True)
     elif not graph.edges:

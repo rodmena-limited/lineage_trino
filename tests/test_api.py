@@ -83,7 +83,6 @@ class TestAPI:
             },
         )
         assert resp.status_code == 200
-        data = resp.json()
 
     async def test_lineage_with_graph_output(self, client):
         """POST includes graph DOT and PNG (STATE-2)."""
@@ -139,7 +138,7 @@ class TestCLI:
     def test_cli_help(self, cli):
         """CLI shows help."""
         result = subprocess.run(
-            [*cli, "--help"], capture_output=True, text=True
+            [*cli, "--help"], capture_output=True, text=True, check=False
         )
         assert result.returncode == 0
         assert "trino-lineage" in result.stdout.lower()
@@ -147,7 +146,7 @@ class TestCLI:
     def test_cli_parse_help(self, cli):
         """CLI parse subcommand shows help."""
         result = subprocess.run(
-            [*cli, "parse", "--help"], capture_output=True, text=True
+            [*cli, "parse", "--help"], capture_output=True, text=True, check=False
         )
         assert result.returncode == 0
 
@@ -159,7 +158,7 @@ class TestCLI:
         result = subprocess.run(
             [*cli, "parse", str(sql_file), "--output-dir", str(out_dir)],
             capture_output=True, text=True,
-            cwd=tmp_path,
+            cwd=tmp_path, check=False,
         )
         assert result.returncode == 0
         # Check JSON output
@@ -174,7 +173,7 @@ class TestCLI:
         sql_file.write_text("CREAT TABLE")
         result = subprocess.run(
             [*cli, "parse", str(sql_file), "--output-dir", str(tmp_path / "out")],
-            capture_output=True, text=True,
+            capture_output=True, text=True, check=False,
         )
         # May exit with 1 since no valid statements parsed, but should not crash
         assert "Failed to parse" in result.stdout + result.stderr or result.returncode == 0
@@ -182,6 +181,6 @@ class TestCLI:
     def test_cli_version(self, cli):
         """CLI has version info."""
         result = subprocess.run(
-            [*cli, "--help"], capture_output=True, text=True
+            [*cli, "--help"], capture_output=True, text=True, check=False
         )
         assert result.returncode == 0

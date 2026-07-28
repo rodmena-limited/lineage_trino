@@ -108,9 +108,7 @@ class SQLParser:
         """Check if a statement is a SELECT (or CTE-wrapped SELECT)."""
         if isinstance(statement, exp.Select):
             return True
-        if isinstance(statement, exp.Union):
-            return True
-        return False
+        return isinstance(statement, exp.Union)
 
     @staticmethod
     def is_ddl_with_select(statement: exp.Statement) -> bool:
@@ -248,7 +246,7 @@ def _extract_table_alias(
         alias = node.alias
         if alias:
             aliases[alias.lower()] = f"__subquery__{alias}"
-    elif isinstance(node, exp.Select) or isinstance(node, exp.Union):
+    elif isinstance(node, (exp.Select, exp.Union)):
         pass
     elif isinstance(node, exp.Alias):
         inner = node.args.get("this")

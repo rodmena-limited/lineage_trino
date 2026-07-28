@@ -110,7 +110,7 @@ async def analyze_lineage(request: LineageRequest):
                 dot=dot,
                 png_base64=renderer.png_to_base64(png) if png else None,
             )
-        except Exception as e:
+        except (OSError, ValueError, RuntimeError) as e:
             logger.warning("Failed to render graph: %s", e)
 
     result = LineageResult(
@@ -131,7 +131,7 @@ async def analyze_lineage(request: LineageRequest):
     },
 )
 async def analyze_lineage_files(
-    files: list[UploadFile] = File(...),
+    files: list[UploadFile] = File(...),  # noqa: B008
     dialect: str = "trino",
     include_graph: bool = True,
 ):
@@ -154,7 +154,7 @@ async def analyze_lineage_files(
         try:
             content = await upload.read()
             sql_text = content.decode("utf-8")
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             errors.append(f"Failed to read {upload.filename}: {e}")
             continue
 
@@ -207,7 +207,7 @@ async def analyze_lineage_files(
                 dot=dot,
                 png_base64=renderer.png_to_base64(png) if png else None,
             )
-        except Exception as e:
+        except (OSError, ValueError, RuntimeError) as e:
             logger.warning("Failed to render graph: %s", e)
 
     return LineageResult(
