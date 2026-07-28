@@ -65,7 +65,9 @@ class TestLineageExpressions:
 
     def test_multiplication(self, engine):
         """Multiplication expression."""
-        result = engine.extract_from_sql("SELECT price * quantity AS revenue FROM orders")
+        result = engine.extract_from_sql(
+            "SELECT price * quantity AS revenue FROM orders"
+        )
         assert len(result.edges) == 1
         assert len(result.edges[0].sources) == 2
 
@@ -92,7 +94,9 @@ class TestLineageExpressions:
 
     def test_cast_expression(self, engine):
         """CAST expression."""
-        result = engine.extract_from_sql("SELECT CAST(price AS DECIMAL(10,2)) AS dec_price FROM items")
+        result = engine.extract_from_sql(
+            "SELECT CAST(price AS DECIMAL(10,2)) AS dec_price FROM items"
+        )
         assert len(result.edges) == 1
         assert result.edges[0].transformation == TransformationType.EXPRESSION
 
@@ -254,9 +258,7 @@ class TestLineageEdge:
 
     def test_table_info_structure(self, engine):
         """TableInfo has correct source/target breakdown."""
-        result = engine.extract_from_sql(
-            "CREATE TABLE dest AS SELECT a FROM src"
-        )
+        result = engine.extract_from_sql("CREATE TABLE dest AS SELECT a FROM src")
         assert "dest" in result.tables.targets or "src" in result.tables.sources
 
     @pytest.mark.skip(reason="Complex CASE when not fully tested")

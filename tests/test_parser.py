@@ -1,6 +1,5 @@
 """Tests for the SQL parser module."""
 
-
 import pytest
 from sqlglot import exp
 

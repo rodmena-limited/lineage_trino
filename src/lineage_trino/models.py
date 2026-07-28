@@ -112,7 +112,9 @@ class LineageMetadata(BaseModel):
         description="ISO timestamp of generation",
     )
     files_processed: int = Field(default=0, description="Number of SQL files processed")
-    statements_parsed: int = Field(default=0, description="Number of SQL statements parsed")
+    statements_parsed: int = Field(
+        default=0, description="Number of SQL statements parsed"
+    )
     edges_count: int = Field(default=0, description="Total lineage edges")
     tables_count: int = Field(default=0, description="Total unique tables")
     dialect: str = Field(default="trino", description="SQL dialect used for parsing")
@@ -127,7 +129,8 @@ class GraphOutput(BaseModel):
 
     dot: str = Field(description="Graphviz DOT format string")
     png_base64: str | None = Field(
-        default=None, description="Base64-encoded PNG rendering (null if graphviz binary unavailable)"
+        default=None,
+        description="Base64-encoded PNG rendering (null if graphviz binary unavailable)",
     )
 
 

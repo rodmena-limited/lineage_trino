@@ -20,9 +20,9 @@ from lineage_trino.models import LineageResult
 
 def run_example(name: str, sql_text: str, output_dir: Path):
     """Run full pipeline on SQL text and save outputs."""
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"Example: {name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     # 1. Parse and extract lineage
     engine = LineageEngine(dialect="trino")
@@ -70,9 +70,7 @@ def run_example(name: str, sql_text: str, output_dir: Path):
     # 4. Print lineage summary
     print("\n  --- Lineage Summary ---")
     for edge in graph.edges[:10]:  # Show first 10
-        sources_str = ", ".join(
-            f"{s.table}.{s.column}" for s in edge.sources
-        )
+        sources_str = ", ".join(f"{s.table}.{s.column}" for s in edge.sources)
         print(f"  {edge.target.table}.{edge.target.column}")
         print(f"    <- {sources_str}")
         print(f"    [{edge.transformation.value}, confidence={edge.confidence}]")
@@ -115,10 +113,10 @@ def main():
     """
     run_example("inline", inline_sql, output_dir)
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("All examples completed!")
     print(f"Output directory: {output_dir.resolve()}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
 
 if __name__ == "__main__":

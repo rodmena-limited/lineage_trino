@@ -46,7 +46,7 @@ class TestGraphRenderer:
             "WITH cte AS (SELECT a FROM src) SELECT a AS out_col FROM cte"
         )
         # CTE should appear as intermediate
-        if hasattr(graph.tables, 'intermediates'):
+        if hasattr(graph.tables, "intermediates"):
             assert True  # CTEs may be tracked as intermediates
 
     def test_render_to_file(self, engine, renderer, tmp_path):
@@ -57,9 +57,9 @@ class TestGraphRenderer:
 
     def test_escape_html_in_labels(self, renderer):
         """HTML special chars are escaped."""
-        escaped = renderer._escape_html('table<name>')
-        assert '&lt;' in escaped
-        assert '&gt;' in escaped
+        escaped = renderer._escape_html("table<name>")
+        assert "&lt;" in escaped
+        assert "&gt;" in escaped
 
     def test_port_id_generation(self, renderer):
         """Port IDs are safe for DOT syntax."""
@@ -73,9 +73,7 @@ class TestGraphOutputComplex:
 
     def test_render_with_aggregation(self, engine, renderer):
         """Render aggregation lineage."""
-        graph = engine.extract_from_sql(
-            "SELECT SUM(amount) AS total FROM payments"
-        )
+        graph = engine.extract_from_sql("SELECT SUM(amount) AS total FROM payments")
         dot, _ = renderer.render(graph)
         assert "total" in dot or "payments" in dot
 

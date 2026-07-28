@@ -134,8 +134,8 @@ class GraphRenderer:
         lines: list[str] = []
         lines.append("digraph Lineage {")
         lines.append("  rankdir=LR;")
-        lines.append(f"  bgcolor=\"{BG_COLOR}\";")
-        lines.append(f"  fontname=\"{settings.graph_font}\";")
+        lines.append(f'  bgcolor="{BG_COLOR}";')
+        lines.append(f'  fontname="{settings.graph_font}";')
         lines.append("  labeljust=l;")
         lines.append("  pad=0.5;")
         lines.append("  nodesep=0.8;")
@@ -147,7 +147,7 @@ class GraphRenderer:
         # Node defaults
         lines.append("  node [")
         lines.append("    shape=plain, ")
-        lines.append(f"    fontname=\"{settings.graph_font}\", ")
+        lines.append(f'    fontname="{settings.graph_font}", ')
         lines.append("    fontsize=11, ")
         lines.append("    margin=0, ")
         lines.append("  ];")
@@ -155,7 +155,7 @@ class GraphRenderer:
 
         # Edge defaults
         lines.append("  edge [")
-        lines.append(f"    fontname=\"{settings.graph_font}\", ")
+        lines.append(f'    fontname="{settings.graph_font}", ')
         lines.append("    fontsize=9, ")
         lines.append("    arrowsize=0.8, ")
         lines.append("  ];")
@@ -199,9 +199,7 @@ class GraphRenderer:
 
         return {k: sorted(v) for k, v in tables.items()}
 
-    def _classify_table(
-        self, table_name: str, table_info: TableInfo
-    ) -> str:
+    def _classify_table(self, table_name: str, table_info: TableInfo) -> str:
         """Classify a table as source, target, or intermediate."""
         if table_name in table_info.targets:
             return "target"
@@ -212,8 +210,11 @@ class GraphRenderer:
         return "source"  # default
 
     def _table_node(
-        self, node_id: str, table_name: str,
-        columns: list[str], table_type: str,
+        self,
+        node_id: str,
+        table_name: str,
+        columns: list[str],
+        table_type: str,
     ) -> str:
         """Generate DOT for a table node as an HTML-like label with rows."""
         if table_type == "target":
@@ -231,29 +232,41 @@ class GraphRenderer:
 
         lines: list[str] = []
         lines.append(f"  {node_id} [")
-        lines.append(f"    label=<<table border=\"0\" cellborder=\"0\" cellpadding=\"6\" cellspacing=\"0\" bgcolor=\"{body_bg}\" style=\"rounded\">")
+        lines.append(
+            f'    label=<<table border="0" cellborder="0" cellpadding="6" cellspacing="0" bgcolor="{body_bg}" style="rounded">'
+        )
 
         # Header row
         lines.append("      <tr>")
-        lines.append(f"        <td bgcolor=\"{header_bg}\" colspan=\"1\" fixedsize=\"false\">")
-        lines.append(f"          <font color=\"{header_fg}\" point-size=\"13\"><b>{self._escape_html(table_name)}</b></font>")
+        lines.append(
+            f'        <td bgcolor="{header_bg}" colspan="1" fixedsize="false">'
+        )
+        lines.append(
+            f'          <font color="{header_fg}" point-size="13"><b>{self._escape_html(table_name)}</b></font>'
+        )
         lines.append("        </td>")
         lines.append("      </tr>")
 
         # Column rows
         for col in columns:
             lines.append("      <tr>")
-            lines.append(f"        <td port=\"{self._port_id(table_name, col)}\" href=\"\" bgcolor=\"{COLUMN_FILL}\" border=\"1\" sides=\"LR\" cellpadding=\"4\">")
-            lines.append("          <table border=\"0\" cellborder=\"0\" cellpadding=\"2\" cellspacing=\"0\">")
+            lines.append(
+                f'        <td port="{self._port_id(table_name, col)}" href="" bgcolor="{COLUMN_FILL}" border="1" sides="LR" cellpadding="4">'
+            )
+            lines.append(
+                '          <table border="0" cellborder="0" cellpadding="2" cellspacing="0">'
+            )
             lines.append("            <tr>")
-            lines.append(f"              <td align=\"left\"><font color=\"{TEXT_COLOR}\" point-size=\"11\">{self._escape_html(col)}</font></td>")
+            lines.append(
+                f'              <td align="left"><font color="{TEXT_COLOR}" point-size="11">{self._escape_html(col)}</font></td>'
+            )
             lines.append("            </tr>")
             lines.append("          </table>")
             lines.append("        </td>")
             lines.append("      </tr>")
 
         lines.append("    </table>>")
-        lines.append(f"    tooltip=\"{self._escape_html(table_name)}\"")
+        lines.append(f'    tooltip="{self._escape_html(table_name)}"')
         lines.append("  ];")
         return "\n".join(lines)
 
@@ -302,11 +315,11 @@ class GraphRenderer:
                 tooltip = f"{src.table}.{src.column} → {target_table}.{target_col}"
 
                 stmt = (
-                    f'  {src_id}:{src_port}:e -> {target_id}:{target_port}:w'
+                    f"  {src_id}:{src_port}:e -> {target_id}:{target_port}:w"
                     f' [color="{style["color"]}", style="{style["style"]}",'
-                    f' penwidth={style["penwidth"]},'
+                    f" penwidth={style['penwidth']},"
                     f' tooltip="{self._escape_html(tooltip)}"'
-                    f' {label}]'
+                    f" {label}]"
                 )
                 statements.append(stmt)
 
@@ -319,7 +332,7 @@ class GraphRenderer:
     def _render_png(self, dot: str) -> bytes | None:
         """Render DOT to PNG bytes using Graphviz."""
         try:
-            import graphviz as gv
+            import graphviz as gv  # type: ignore[import-untyped]
 
             src = gv.Source(dot)
             png_bytes = src.pipe(format="png")

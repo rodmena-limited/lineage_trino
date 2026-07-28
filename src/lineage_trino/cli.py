@@ -47,19 +47,26 @@ def parse(
         ..., help="SQL file(s) to parse", exists=True, readable=True
     ),
     output_dir: str = typer.Option(
-        "lineage_output", "--output-dir", "-o",
+        "lineage_output",
+        "--output-dir",
+        "-o",
         help="Output directory for generated files",
     ),
     dialect: str = typer.Option(
-        "trino", "--dialect", "-d",
+        "trino",
+        "--dialect",
+        "-d",
         help="SQL dialect (trino, presto, etc.)",
     ),
     pretty: bool = typer.Option(
-        True, "--pretty/--compact",
+        True,
+        "--pretty/--compact",
         help="Pretty-print JSON output",
     ),
     skip_graph: bool = typer.Option(
-        False, "--skip-graph", "-s",
+        False,
+        "--skip-graph",
+        "-s",
         help="Skip graph rendering",
     ),
 ):
@@ -88,8 +95,10 @@ def parse(
 
     # Extract lineage
     graph = engine.extract(all_statements)
-    typer.echo(f"  Lineage: {graph.metadata.edges_count} edges, "
-               f"{graph.metadata.tables_count} tables")
+    typer.echo(
+        f"  Lineage: {graph.metadata.edges_count} edges, "
+        f"{graph.metadata.tables_count} tables"
+    )
 
     # Write JSON output
     result = LineageResult(

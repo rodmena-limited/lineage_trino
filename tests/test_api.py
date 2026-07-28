@@ -13,6 +13,7 @@ from lineage_trino.api import app
 # API tests
 # ------------------------------------------------------------------
 
+
 class TestAPI:
     """API endpoint tests."""
 
@@ -127,6 +128,7 @@ class TestAPI:
 # CLI tests
 # ------------------------------------------------------------------
 
+
 class TestCLI:
     """CLI command tests."""
 
@@ -157,8 +159,10 @@ class TestCLI:
         out_dir = tmp_path / "output"
         result = subprocess.run(
             [*cli, "parse", str(sql_file), "--output-dir", str(out_dir)],
-            capture_output=True, text=True,
-            cwd=tmp_path, check=False,
+            capture_output=True,
+            text=True,
+            cwd=tmp_path,
+            check=False,
         )
         assert result.returncode == 0
         # Check JSON output
@@ -173,10 +177,14 @@ class TestCLI:
         sql_file.write_text("CREAT TABLE")
         result = subprocess.run(
             [*cli, "parse", str(sql_file), "--output-dir", str(tmp_path / "out")],
-            capture_output=True, text=True, check=False,
+            capture_output=True,
+            text=True,
+            check=False,
         )
         # May exit with 1 since no valid statements parsed, but should not crash
-        assert "Failed to parse" in result.stdout + result.stderr or result.returncode == 0
+        assert (
+            "Failed to parse" in result.stdout + result.stderr or result.returncode == 0
+        )
 
     def test_cli_version(self, cli):
         """CLI has version info."""

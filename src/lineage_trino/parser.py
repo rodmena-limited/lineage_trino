@@ -46,7 +46,7 @@ class SQLParser:
             )
         self.dialect = dialect
 
-    def parse(self, sql_text: str, source_file: str | None = None) -> list[exp.Statement]:
+    def parse(self, sql_text: str, source_file: str | None = None) -> list[exp.Expr]:
         """
         Parse a SQL string into a list of sqlglot AST statements.
 
@@ -64,8 +64,10 @@ class SQLParser:
             return []
 
         try:
-            statements = sqlglot.parse(sql_text, dialect=self.dialect, error_level=sqlglot.ErrorLevel.RAISE)
-            parsed: list[exp.Statement] = []
+            statements = sqlglot.parse(
+                sql_text, dialect=self.dialect, error_level=sqlglot.ErrorLevel.RAISE
+            )
+            parsed: list[exp.Expr] = []
             for stmt in statements:
                 if stmt is not None:
                     parsed.append(stmt)
@@ -78,7 +80,7 @@ class SQLParser:
             msg += f": {e}"
             raise SQLParseError(msg) from e
 
-    def parse_files(self, paths: list[str]) -> dict[str, list[exp.Statement]]:
+    def parse_files(self, paths: list[str]) -> dict[str, list[exp.Expr]]:
         """
         Parse multiple SQL files.
 
@@ -88,7 +90,7 @@ class SQLParser:
         Returns:
             Dict mapping source file path to list of parsed statements.
         """
-        result: dict[str, list[exp.Statement]] = {}
+        result: dict[str, list[exp.Expr]] = {}
         for path in paths:
             path_obj = Path(path)
             if not path_obj.exists():
@@ -104,14 +106,14 @@ class SQLParser:
         return result
 
     @staticmethod
-    def is_select(statement: exp.Statement) -> bool:
+    def is_select(statement: exp.Expr) -> bool:
         """Check if a statement is a SELECT (or CTE-wrapped SELECT)."""
         if isinstance(statement, exp.Select):
             return True
         return isinstance(statement, exp.Union)
 
     @staticmethod
-    def is_ddl_with_select(statement: exp.Statement) -> bool:
+    def is_ddl_with_select(statement: exp.Expr) -> bool:
         """Check if statement is a DDL that contains a SELECT (CREATE TABLE AS, INSERT INTO)."""
         if isinstance(statement, exp.Create):
             return statement.args.get("expression") is not None
@@ -120,7 +122,7 @@ class SQLParser:
         return False
 
     @staticmethod
-    def get_target_table(statement: exp.Statement) -> str | None:
+    def get_target_table(statement: exp.Expr) -> str | None:
         """
         Extract the target table name from DDL/DML statements.
 
@@ -137,7 +139,9 @@ class SQLParser:
         return None
 
     @staticmethod
-    def get_select_from_statement(statement: exp.Statement) -> exp.Select | exp.Union | None:
+    def get_select_from_statement(
+        statement: exp.Expr,
+    ) -> exp.Select | exp.Union | None:
         """
         Extract the inner SELECT from a DDL/DML statement.
         For plain SELECT, return as-is. For CREATE/INSERT, extract the inner query.
@@ -155,14 +159,14 @@ class SQLParser:
         return None
 
     @staticmethod
-    def extract_ctes(statement: exp.Select | exp.Union) -> dict[str, exp.Statement]:
+    def extract_ctes(statement: exp.Select | exp.Union) -> dict[str, exp.Expr]:
         """
         Extract CTE (WITH clause) definitions from a statement.
 
         Returns:
             Dict of CTE name → CTE body AST node.
         """
-        ctes: dict[str, exp.Statement] = {}
+        ctes: dict[str, exp.Expr] = {}
         # In sqlglot v30+, the WITH clause key is "with_" (not "with")
         with_clause = statement.args.get("with_")
         if with_clause:
@@ -176,7 +180,7 @@ class SQLParser:
         return ctes
 
     @staticmethod
-    def get_select_expressions(query: exp.Select | exp.Union) -> list[exp.Expression]:
+    def get_select_expressions(query: exp.Select | exp.Union) -> list[exp.Expr]:
         """
         Get the SELECT expressions (output columns) from a query.
 
@@ -226,16 +230,14 @@ def _table_full_name(node: exp.Table) -> str:
     catalog = node.args.get("catalog")
     db = node.args.get("db")
     if catalog:
-        parts.append(catalog.name if hasattr(catalog, 'name') else str(catalog))
+        parts.append(catalog.name if hasattr(catalog, "name") else str(catalog))
     if db:
-        parts.append(db.name if hasattr(db, 'name') else str(db))
+        parts.append(db.name if hasattr(db, "name") else str(db))
     parts.append(node.name)
     return ".".join(parts)
 
 
-def _extract_table_alias(
-    node: exp.Expression, aliases: dict[str, str]
-) -> None:
+def _extract_table_alias(node: exp.Expr, aliases: dict[str, str]) -> None:
     """Extract table name and alias from a FROM/JOIN target node."""
     if isinstance(node, exp.Table):
         full_name = _table_full_name(node)

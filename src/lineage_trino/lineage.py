@@ -61,7 +61,7 @@ class LineageEngine:
 
     def extract(
         self,
-        statements: list[exp.Statement],
+        statements: list[exp.Expr],
         source_file: str | None = None,
     ) -> LineageGraph:
         """
@@ -135,7 +135,7 @@ class LineageEngine:
     # ------------------------------------------------------------------
 
     def _process_statement(
-        self, stmt: exp.Statement, source_file: str | None = None
+        self, stmt: exp.Expr, source_file: str | None = None
     ) -> list[LineageEdge]:
         """Process a single SQL statement and return lineage edges."""
         target_table = SQLParser.get_target_table(stmt)
@@ -144,7 +144,9 @@ class LineageEngine:
         if select is None:
             return []
 
-        return self._trace_select(select, target_table=target_table, source_file=source_file)
+        return self._trace_select(
+            select, target_table=target_table, source_file=source_file
+        )
 
     # ------------------------------------------------------------------
     # SELECT tracer
@@ -154,7 +156,7 @@ class LineageEngine:
         self,
         query: exp.Select | exp.Union,
         target_table: str | None = None,
-        ctes: dict[str, exp.Statement] | None = None,
+        ctes: dict[str, exp.Expr] | None = None,
         source_file: str | None = None,
         parent_context: TraceContext | None = None,
     ) -> list[LineageEdge]:
@@ -174,7 +176,9 @@ class LineageEngine:
 
         # Handle UNION: process each branch separately and merge
         if isinstance(query, exp.Union):
-            return self._trace_union(query, target_table, merged_ctes, source_file, parent_context)
+            return self._trace_union(
+                query, target_table, merged_ctes, source_file, parent_context
+            )
 
         context = TraceContext(
             aliases=aliases,
@@ -197,7 +201,7 @@ class LineageEngine:
         self,
         union: exp.Union,
         target_table: str | None,
-        ctes: dict[str, exp.Statement],
+        ctes: dict[str, exp.Expr],
         source_file: str | None,
         parent_context: TraceContext | None,
     ) -> list[LineageEdge]:
@@ -210,14 +214,20 @@ class LineageEngine:
 
         if isinstance(left, (exp.Select, exp.Union)):
             left_edges = self._trace_select(
-                left, target_table=target_table, ctes=ctes,
-                source_file=source_file, parent_context=parent_context,
+                left,
+                target_table=target_table,
+                ctes=ctes,
+                source_file=source_file,
+                parent_context=parent_context,
             )
 
         if isinstance(right, (exp.Select, exp.Union)):
             right_edges = self._trace_select(
-                right, target_table=target_table, ctes=ctes,
-                source_file=source_file, parent_context=parent_context,
+                right,
+                target_table=target_table,
+                ctes=ctes,
+                source_file=source_file,
+                parent_context=parent_context,
             )
 
         return left_edges + right_edges
@@ -228,7 +238,7 @@ class LineageEngine:
 
     def _trace_select_expr(
         self,
-        expr: exp.Expression,
+        expr: exp.Expr,
         context: TraceContext,
         target_table: str | None,
         source_file: str | None,
@@ -312,7 +322,7 @@ class LineageEngine:
 
     def _trace_expression(
         self,
-        expr: exp.Expression,
+        expr: exp.Expr | None,
         context: TraceContext,
     ) -> list[SourceColumn]:
         """
@@ -404,9 +414,7 @@ class LineageEngine:
             for when_clause in expr.args.get("ifs", []):
                 if isinstance(when_clause, exp.If):
                     cond = self._trace_expression(when_clause.this, context)
-                    then = self._trace_expression(
-                        when_clause.args.get("true"), context
-                    )
+                    then = self._trace_expression(when_clause.args.get("true"), context)
                     sources.extend(cond)
                     sources.extend(then)
             else_clause = expr.args.get("default")
@@ -500,7 +508,7 @@ class LineageEngine:
         return _deduplicate_sources(sources)
 
     def _trace_children(
-        self, expr: exp.Expression, context: TraceContext
+        self, expr: exp.Expr, context: TraceContext
     ) -> list[SourceColumn]:
         """Fallback: trace all child expression nodes."""
         sources: list[SourceColumn] = []
@@ -609,7 +617,7 @@ class TraceContext:
     def __init__(
         self,
         aliases: dict[str, str] | None = None,
-        ctes: dict[str, exp.Statement] | None = None,
+        ctes: dict[str, exp.Expr] | None = None,
         parent: TraceContext | None = None,
     ):
         self.aliases = aliases or {}
@@ -672,7 +680,7 @@ class TraceContext:
 # ------------------------------------------------------------------
 
 
-def _extract_output_name(expr: exp.Expression) -> str:
+def _extract_output_name(expr: exp.Expr) -> str:
     """Extract the output column name from a SELECT expression."""
     # Handle alias
     alias = expr.args.get("alias")
@@ -691,7 +699,7 @@ def _extract_output_name(expr: exp.Expression) -> str:
     return expr.sql(dialect="trino")
 
 
-def _unwrap_alias(expr: exp.Expression) -> exp.Expression:
+def _unwrap_alias(expr: exp.Expr) -> exp.Expr:
     """Unwrap alias nodes to get the inner expression."""
     if isinstance(expr, exp.Alias):
         inner = expr.args.get("this")
@@ -735,24 +743,51 @@ def _get_func_args(func: exp.Func) -> list:
 def _is_aggregation_function(expr: exp.Func) -> bool:
     """Check if a function is an aggregation."""
     agg_funcs = {
-        "sum", "count", "avg", "min", "max",
-        "array_agg", "collect", "collect_set", "collect_list",
-        "approx_distinct", "approx_percentile",
-        "bitwise_and", "bitwise_or", "bitwise_xor",
-        "bool_and", "bool_or",
-        "corr", "covar_samp", "covar_pop",
-        "every", "some",
+        "sum",
+        "count",
+        "avg",
+        "min",
+        "max",
+        "array_agg",
+        "collect",
+        "collect_set",
+        "collect_list",
+        "approx_distinct",
+        "approx_percentile",
+        "bitwise_and",
+        "bitwise_or",
+        "bitwise_xor",
+        "bool_and",
+        "bool_or",
+        "corr",
+        "covar_samp",
+        "covar_pop",
+        "every",
+        "some",
         "histogram",
-        "kurtosis", "skewness",
+        "kurtosis",
+        "skewness",
         "regr_*",
-        "stddev", "stddev_pop", "stddev_samp",
-        "variance", "var_pop", "var_samp",
+        "stddev",
+        "stddev_pop",
+        "stddev_samp",
+        "variance",
+        "var_pop",
+        "var_samp",
         "count_if",
-        "listagg", "string_agg",
+        "listagg",
+        "string_agg",
         "multiset_union",
-        "percentile_cont", "percentile_disc",
-        "rank", "dense_rank", "row_number",
-        "ntile", "lead", "lag", "first_value", "last_value",
+        "percentile_cont",
+        "percentile_disc",
+        "rank",
+        "dense_rank",
+        "row_number",
+        "ntile",
+        "lead",
+        "lag",
+        "first_value",
+        "last_value",
         "nth_value",
     }
     func_name = expr.sql_name().lower()
@@ -764,13 +799,18 @@ def _is_aggregation_function(expr: exp.Func) -> bool:
         return True
     # Check if it's a known agg
     return func_name in {
-        "sum", "count", "avg", "min", "max",
-        "array_agg", "collect",
+        "sum",
+        "count",
+        "avg",
+        "min",
+        "max",
+        "array_agg",
+        "collect",
     }
 
 
 def _classify_expression(
-    expr: exp.Expression,
+    expr: exp.Expr,
 ) -> tuple[TransformationType, str | None]:
     """Classify an expression into a transformation type."""
     expr_str = expr.sql(dialect="trino")
@@ -802,7 +842,9 @@ def _compute_confidence(sources: list[SourceColumn]) -> float:
     """Compute confidence based on resolution quality."""
     if not sources:
         return 0.5
-    n_unresolved = sum(1 for s in sources if s.table in ("__unresolved__", "__unknown__"))
+    n_unresolved = sum(
+        1 for s in sources if s.table in ("__unresolved__", "__unknown__")
+    )
     if n_unresolved == len(sources):
         return 0.3
     if n_unresolved > 0:

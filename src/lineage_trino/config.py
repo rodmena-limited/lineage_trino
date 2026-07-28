@@ -23,7 +23,11 @@ class Settings(BaseSettings):
     graph_node_fill: str = "#1a73e8"
     graph_node_text: str = "#ffffff"
 
-    model_config = {"env_prefix": "TRINO_LINEAGE_", "env_file": ".env", "extra": "ignore"}
+    model_config = {
+        "env_prefix": "TRINO_LINEAGE_",
+        "env_file": ".env",
+        "extra": "ignore",
+    }
 
 
 settings = Settings()

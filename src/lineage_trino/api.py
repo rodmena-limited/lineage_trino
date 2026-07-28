@@ -34,9 +34,7 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan for startup/shutdown events."""
-    logger.info(
-        "trino-lineage API starting on %s:%s", settings.host, settings.port
-    )
+    logger.info("trino-lineage API starting on %s:%s", settings.host, settings.port)
     yield
     logger.info("trino-lineage API shutting down")
 
@@ -91,9 +89,7 @@ async def analyze_lineage(request: LineageRequest):
     renderer = GraphRenderer()
 
     try:
-        statements = engine.parser.parse(
-            request.sql, source_file=request.source_file
-        )
+        statements = engine.parser.parse(request.sql, source_file=request.source_file)
     except SQLParseError as e:
         raise HTTPException(
             status_code=400,
@@ -193,6 +189,7 @@ async def analyze_lineage_files(
 
     # Build a minimal graph for rendering
     from lineage_trino.lineage import LineageGraph
+
     full_graph = LineageGraph(
         edges=all_edges,
         tables=table_info,
